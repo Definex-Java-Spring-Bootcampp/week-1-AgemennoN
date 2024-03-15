@@ -1,6 +1,8 @@
 
 package com.ecommerce.service.model;
 
+import com.ecommerce.service.model.handlers.CartHandler;
+import com.ecommerce.service.model.handlers.OrderHandler;
 import java.time.LocalDate;
 
 public class User {
@@ -11,7 +13,27 @@ public class User {
         private LocalDate userRegisterDate;
         private LocalDate userBirthDate;
         private Boolean userActive;
+        private Cart cart;
 
+    public User(String userName, String userPassword, String userMail, String userPhoneNumber, LocalDate userBirthDate) {
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.userMail = userMail;
+        this.userPhoneNumber = userPhoneNumber;
+        this.userBirthDate = userBirthDate;
+        
+        this.userRegisterDate = LocalDate.now();
+        this.userActive = true;
+    }
+    
+    public void addProductToCart(Product product, Integer quantity){
+        CartHandler.addProductToUserCart(product, quantity, this);
+    }
+    
+    public void purchaseCart(String name, String phoneNumber, String address){
+        OrderHandler.purchaseCart(this, name, phoneNumber, address);
+    }
+    
     public String getUserName() {
         return userName;
     }
@@ -52,6 +74,14 @@ public class User {
         this.userBirthDate = userBirthDate;
     }
 
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+    
     public Boolean getUserActive() {
         return userActive;
     }

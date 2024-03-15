@@ -11,11 +11,21 @@ public class Product {
     private BigDecimal productPrice;
     private String productDescription;
     private List<CategoryType> productCategoryList;
-    private Boolean productActive;
-    private BigDecimal productPriceOnSale;
-    private BigDecimal productDiscountRate;
+    //private BigDecimal productPriceOnSale;
+    //private BigDecimal productDiscountRate;
     private Integer productStock;
+    private Boolean productActive;
 
+    public Product(Integer productId, String productName, BigDecimal productPrice, String productDescription, List<CategoryType> productCategoryList, Integer productStock, Boolean productActive) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productDescription = productDescription;
+        this.productCategoryList = productCategoryList;
+        this.productStock = productStock;
+        this.productActive = productActive;
+    }
+    
     public Integer getProductId() {
         return productId;
     }
@@ -58,22 +68,6 @@ public class Product {
 
     public void setProductActive(Boolean productActive) {
         this.productActive = productActive;
-    }
-
-    public BigDecimal getProductPriceOnSale() {
-        return productPriceOnSale;
-    }
-
-    public void setProductPriceOnSale(BigDecimal productPriceOnSale) {
-        this.productPriceOnSale = productPriceOnSale;
-    }
-
-    public BigDecimal getProductDiscountRate() {
-        return productDiscountRate;
-    }
-
-    public void setProductDiscountRate(BigDecimal productDiscountRate) {
-        this.productDiscountRate = productDiscountRate;
     }
 
     public Integer getProductStock() {

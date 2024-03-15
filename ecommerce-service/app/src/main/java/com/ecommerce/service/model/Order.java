@@ -15,7 +15,8 @@ public class Order {
         private LocalDateTime orderDateTime;
         private Boolean isDelivered;
 
-    public Order(User user, Cart cart, String name, String phoneNumber, String address) {
+    public Order(Integer orderId, User user, Cart cart, String name, String phoneNumber, String address) {
+        this.orderId = orderId;
         this.user = user;
         this.cart = cart;
         this.name = name;
