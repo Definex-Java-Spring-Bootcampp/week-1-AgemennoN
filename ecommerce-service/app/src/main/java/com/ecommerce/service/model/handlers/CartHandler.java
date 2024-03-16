@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CartHandler {
     public static List<Cart> cartList = new ArrayList<>();
@@ -52,6 +53,12 @@ public class CartHandler {
         CartHandler.cartList = cartList;
     }
 
+    public static Map<Product, Integer> sumProductsInCarts(List<Cart> carts){
+        return carts.stream()
+                    .map(Cart::getProductMap)
+                    .flatMap(map -> map.entrySet().stream())
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum));
+    }
     
     
 }

@@ -5,8 +5,10 @@ import com.ecommerce.service.model.Cart;
 import com.ecommerce.service.model.Order;
 import com.ecommerce.service.model.User;
 import com.ecommerce.service.model.factories.OrderFactory;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrderHandler {
     public static List<Order> orderList = new ArrayList<>();
@@ -27,4 +29,9 @@ public class OrderHandler {
         OrderHandler.orderList = orderList;
     }
     
+    public static List<Order> getOrdersAbovePrice(BigDecimal amount){
+        return orderList.stream()
+                        .filter(order -> order.getTotalPrice().compareTo(amount) > 0)
+                        .collect(Collectors.toList());
+    }
 }

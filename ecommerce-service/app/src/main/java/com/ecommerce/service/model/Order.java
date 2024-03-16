@@ -5,13 +5,13 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class Order {
-        private Integer orderId;
-        private User user;  // User Mail address or UserId might be better
-        private Cart cart;
+        private final Integer orderId;
+        private final User user;  // User Mail address or UserId might be better
+        private final Cart cart;
         private String name;        // might be different from user's
         private String phoneNumber; // might be different from user's
         private String address;
-        private BigDecimal totalPrice;
+        private final BigDecimal totalPrice;
         private LocalDateTime orderDateTime;
         private Boolean isDelivered;
 
@@ -22,6 +22,9 @@ public class Order {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.totalPrice = cart.getPrice();
+        this.orderDateTime = LocalDateTime.now();
+        this.isDelivered = Boolean.FALSE;
     }
 
     public Integer getOrderId() {

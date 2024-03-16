@@ -4,6 +4,7 @@ package com.ecommerce.service.model;
 import com.ecommerce.service.model.handlers.CartHandler;
 import com.ecommerce.service.model.handlers.OrderHandler;
 import java.time.LocalDate;
+import java.time.Period;
 
 public class User {
         private String userName;
@@ -40,6 +41,10 @@ public class User {
         }
         Order order = OrderHandler.purchaseCart(this, name, phoneNumber, address);
         return order;
+    }
+    
+    public Integer getAge(){
+        return Period.between(this.userBirthDate, LocalDate.now()).getYears();
     }
     
     public String getUserName() {
@@ -101,13 +106,14 @@ public class User {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("User{");
+        sb.append("\nUser{");
         sb.append("userName=").append(userName);
         //sb.append(", userPassword=").append(userPassword);
         sb.append(", userMail=").append(userMail);
         sb.append(", userPhoneNumber=").append(userPhoneNumber);
         sb.append(", userRegisterDate=").append(userRegisterDate);
         sb.append(", userBirthDate=").append(userBirthDate);
+        sb.append(", age=").append(this.getAge());
         sb.append(", userActive=").append(userActive);
         sb.append("\n cart=").append(cart);
         sb.append('}');

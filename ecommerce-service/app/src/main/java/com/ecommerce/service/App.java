@@ -35,8 +35,10 @@ public class App {
         System.out.println("\n\n########################################################");
         System.out.println("##########   ----------   USERS   ----------   ##########");
         User user1 = UserFactory.createUser("Egemen", "YeYo", "Egemen@gmail.com", "55544432", LocalDate.now().minusYears(25));
-        User user2 = UserFactory.createUser("CemD", "GizliSifre", "Cem@gmail.com", "55443432", LocalDate.now().minusYears(27));
+        User user2 = UserFactory.createUser("CemD", "GizliSifre", "Cem@gmail.com", "55443432", LocalDate.now().minusYears(28));
         User user3 = UserFactory.createUser("YasliAdam", "123", "old@gmail.com", "55443432", LocalDate.now().minusYears(50));
+        User user4 = UserFactory.createUser("CemD", "Gi1Sifre", "Cem35@gmail.com", "55443432", LocalDate.now().minusYears(35));
+        User user5 = UserFactory.createUser("CemD", "Gi2Sifre", "Cem22@gmail.com", "55443432", LocalDate.now().minusYears(22));
         
         System.out.println(UserHandler.getUserList());
         
@@ -47,6 +49,14 @@ public class App {
         
         user3.addProductToCart(product5, 2);
         user3.addProductToCart(product6, 2);
+        
+        user5.addProductToCart(product6, 5);
+        user5.addProductToCart(product6, 10);
+        user5.addProductToCart(product2, 2);
+        user5.purchaseCart("GencoCem", "123456789", "XXL Migros");
+        user5.addProductToCart(product1, 1);
+        System.out.println("Number of Users: " +  UserHandler.getUserList().size());
+        
         
         System.out.println("\n\n########################################################");
         System.out.println("##########   ----------   Added to Cart   ----------   ##########");
@@ -69,6 +79,36 @@ public class App {
         System.out.println("\n\n##############################");
         Order order4 = user1.purchaseCart("Egemen", "1234568", "Manisa Falan Filan");
         System.out.println(OrderHandler.getOrderList());
+        
+        
+        System.out.println("\n\n------------------------------------------------");
+        UserHandler.printUserPurchases(user1);
+        UserHandler.printUserPurchases(user2);
+        System.out.println("------------------------------------------------\n\n");
+        
+        user1.addProductToCart(product1, 1);
+        Order order5 = user1.purchaseCart("Egemen", "1234568", "Manisa Falan Filan");
+        
+        Integer age1 = 20;
+        Integer age2 = 30;
 
+        System.out.println("\n\n####AGE BETWEEN %d and %d USERS ".formatted(age1,age2));
+        System.out.println(UserHandler.getUsersWithAgeBetween(age1, age2));
+        
+        
+        System.out.println("\n\n####AGE BETWEEN %d and %d users purchases ".formatted(age1,age2));
+        UserHandler.printUserPurchases(UserHandler.getUsersWithAgeBetween(age1, age2));
+        
+        System.out.println("\n\n########################################################");
+        System.out.println("---------Purchases ALL USERS WITH NAME CemD between age 20-30---------------");
+        UserHandler.printUserPurchases(UserHandler.findUsers("userName", "CemD", UserHandler.getUsersWithAgeBetween(age1, age2)));
+        System.out.println("\n\n---------FIND ALL USERS ACTIVE---------------");
+        System.out.println(UserHandler.findUsers("userActive", Boolean.TRUE));
+        
+        
+        BigDecimal price = BigDecimal.valueOf(20000);
+        System.out.println("\n\n###################Orders Above Price %.2f ##################".formatted(price));
+        System.out.println(OrderHandler.getOrdersAbovePrice(price));
+        
     }
 }
