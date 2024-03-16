@@ -15,9 +15,7 @@ public class OrderHandler {
         Cart cart = user.getCart();
         cart.setIsOrdered(Boolean.TRUE);
         Order order = OrderFactory.createOrder(user, cart, name, phoneNumber, address);
-        user.setCart(null);
-        
-        orderList.add(order);
+        user.setCart(null); // Instead of null should have make an Empty Cart
         return order;
     }
 

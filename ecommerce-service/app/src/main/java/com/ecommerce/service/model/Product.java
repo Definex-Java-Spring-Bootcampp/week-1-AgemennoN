@@ -78,9 +78,21 @@ public class Product {
         this.productStock = productStock;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nProduct{");
+        sb.append("productId=").append(productId);
+        sb.append(", productName=").append(productName);
+        sb.append(", productPrice=").append(productPrice);
+        sb.append(", productDescription=").append(productDescription);
+        sb.append(", productCategoryList=").append(productCategoryList);
+        sb.append(", productStock=").append(productStock);
+        sb.append(", productActive=").append(productActive);
+        sb.append('}');
+        return sb.toString();
+    }
+
     
     
- 
-        
-        
 }

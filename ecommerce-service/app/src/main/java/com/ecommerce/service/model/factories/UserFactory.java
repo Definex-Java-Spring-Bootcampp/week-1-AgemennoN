@@ -16,7 +16,7 @@ public class UserFactory {
             return user;
         }
         String hashedPassword = hashString(userPassword);
-        user = new User(userName, hashedPassword, userName, userPhoneNumber, userBirthDate);
+        user = new User(userName, hashedPassword, userMail, userPhoneNumber, userBirthDate);
         
         UserHandler.getUserList().add(user);
         return user;

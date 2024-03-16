@@ -9,7 +9,7 @@ import com.ecommerce.service.model.handlers.OrderHandler;
 public class OrderFactory {
 
     public static Order createOrder(User user, Cart cart, String name, String phoneNumber, String address){
-        Integer orderId = OrderHandler.getOrderList().size();
+        Integer orderId = OrderHandler.getOrderList().size() + 1;
         Order order = new Order(orderId, user, cart, name, phoneNumber, address);
         OrderHandler.getOrderList().add(order);
         return order;

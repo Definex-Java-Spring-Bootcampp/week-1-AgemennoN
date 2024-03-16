@@ -60,5 +60,18 @@ public class Cart {
         this.isOrdered = isOrdered;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Cart{");
+        sb.append("cartId=").append(cartId);
+        //sb.append(", user=").append(user.getUserName());
+        sb.append(", price=").append(price);
+        sb.append(", isOrdered=").append(isOrdered);
+        sb.append("\nproductMap=").append(productMap);
+        sb.append('}');
+        return sb.toString();
+    }
+
     
 }

@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public class Order {
         private Integer orderId;
-        private User user;
+        private User user;  // User Mail address or UserId might be better
         private Cart cart;
         private String name;        // might be different from user's
         private String phoneNumber; // might be different from user's
@@ -75,7 +75,24 @@ public class Order {
     public void setIsDelivered(Boolean isDelivered) {
         this.isDelivered = isDelivered;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n\nOrder{");
+        sb.append("orderId=").append(orderId);
+        sb.append(", user=").append(user.getUserMail());
+        sb.append(", name=").append(name);
+        sb.append(", phoneNumber=").append(phoneNumber);
+        sb.append(", address=").append(address);
+        sb.append(", totalPrice=").append(totalPrice);
+        sb.append(", orderDateTime=").append(orderDateTime);
+        sb.append(", isDelivered=").append(isDelivered);
+        sb.append(",\ncart=").append(cart);
+        sb.append('}');
+        return sb.toString();
+    }
     
-        
+    
         
 }

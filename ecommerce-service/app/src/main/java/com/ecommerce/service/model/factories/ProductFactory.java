@@ -15,7 +15,7 @@ public class ProductFactory {
                                         Integer productStock,
                                         Boolean productActive){
         
-        Integer productId = ProductHandler.getProductList().size();
+        Integer productId = ProductHandler.getProductList().size() + 1 ;
         
         Product product = new Product(productId, productName, productPrice, productDescription, productCategoryList, productStock, productActive);
         ProductHandler.getProductList().add(product);

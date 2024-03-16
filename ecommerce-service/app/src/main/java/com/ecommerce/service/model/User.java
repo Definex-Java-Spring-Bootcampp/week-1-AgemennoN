@@ -26,12 +26,20 @@ public class User {
         this.userActive = true;
     }
     
+    // MOVE to USerHandler
     public void addProductToCart(Product product, Integer quantity){
-        CartHandler.addProductToUserCart(product, quantity, this);
+        this.cart = CartHandler.addProductToUserCart(product, quantity, this);
     }
     
-    public void purchaseCart(String name, String phoneNumber, String address){
-        OrderHandler.purchaseCart(this, name, phoneNumber, address);
+    // MOVE to USerHandler
+    public Order purchaseCart(String name, String phoneNumber, String address){
+        // decrease quantitiy of the products after purchase
+        if (this.cart == null){
+            System.out.println("Cart is empty");
+            return null;
+        }
+        Order order = OrderHandler.purchaseCart(this, name, phoneNumber, address);
+        return order;
     }
     
     public String getUserName() {
@@ -89,5 +97,22 @@ public class User {
     public void setUserActive(Boolean userActive) {
         this.userActive = userActive;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("User{");
+        sb.append("userName=").append(userName);
+        //sb.append(", userPassword=").append(userPassword);
+        sb.append(", userMail=").append(userMail);
+        sb.append(", userPhoneNumber=").append(userPhoneNumber);
+        sb.append(", userRegisterDate=").append(userRegisterDate);
+        sb.append(", userBirthDate=").append(userBirthDate);
+        sb.append(", userActive=").append(userActive);
+        sb.append("\n cart=").append(cart);
+        sb.append('}');
+        return sb.toString();
+    }
+    
     
 }
